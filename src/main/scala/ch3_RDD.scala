@@ -42,10 +42,10 @@ object ch3_RDD {
 //    subtractTest(List(1, 2, 4, 5), List(1, 2, 3, 4))
 //    cateTest(List(1, 2, 4, 5), List(1, 2, 3, 4))
 //    reduceTest()
-    //aggregateTest()
+    aggregateTest()
 //    countTest()
 //    foldTest()
-    persistTest()
+//    persistTest()
 
   }
 
@@ -67,13 +67,6 @@ object ch3_RDD {
 
   }
 
-  def wordCount(args:Array[String]): Unit ={
-    val tf = sc.textFile(args(0))
-    val splits = tf.flatMap(line => line.split(" ")).map(word =>(word,1))
-    val counts = splits.reduceByKey((x,y)=>x+y)
-    println(counts)
-    splits.foreach(println)
-  }
 
   /**
    *
@@ -109,7 +102,7 @@ object ch3_RDD {
    */
 //  def divid2(list: List[Integer]): Unit = {
 //    val number = sc.parallelize(list)
-//    val result = number.flatMap(n => n.to(3))
+//    val result = number.flatMap(n => n.to(3) )
 //    println(result.collect().mkString(","))
 //    result.foreach(println)
 //    println(result.first())
@@ -183,8 +176,11 @@ object ch3_RDD {
       (acc, value) => (acc._1 + value, acc._2 + 1),
       (acc1, acc2) => (acc1._1 + acc2._1, acc1._2+ acc2._2)
     )
-
+    println("-------")
+    //    for (i <- result)
+    //
     println(result)
+//      println(i)
   }
 //  def  aggTest(): Unit = {
 //    val input = sc.parallelize(List(1,2,3,4,5,6), 2)
